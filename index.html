@@ -38,5 +38,25 @@
         });
     </script>
 
+    <button onClick="sendData()">Send Product Data</button>
+
+    <script>
+        async function sendData() {
+            const item = window.dataLayer.find(i => i.event === 'product_view');
+
+            const response = await fetch('https://httpbin.org/post', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    product_name: item.product_name,
+                    product_price: item.product_price
+                })
+            });
+
+            const data = await response.json();
+            console.log(data);
+        }
+    </script>
 </body>
+
 </html>
