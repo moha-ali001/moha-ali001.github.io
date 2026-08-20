@@ -24,4 +24,14 @@
 </body>
     <h1 id="product-name">Super Widget</h1>
     <p>Price: $<span id="product-price">19.99</span></p>
+
+  <!-- Data Layer Push -->
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+    'event': 'product_view',
+    'product_name': document.getElementById('product-name').innerText,
+    'product_price': document.getElementById('product-price').innerText
+  });
+    </script>
 </html>
